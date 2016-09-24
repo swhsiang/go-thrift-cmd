@@ -1,6 +1,6 @@
-namespace go computing
+namespace go swhsiang.computing
 
-typedef i32 int
+// typedef i32 int
 
 struct StatusOfService {
     1: required string version;
@@ -9,15 +9,15 @@ struct StatusOfService {
 }
 
 struct InputOfComputing {
-    1: optional list<int> num_arr;
+    1: required list<i32> num_arr;
 }
 
 struct OutputOfComputing {
     1: required string error;
-    2: optional int res;
+    2: optional i32 res;
 }
 
 service Computing {
     StatusOfService ping(),
-    OutputOfComputing add(1:InputOfComputing input);
+    OutputOfComputing compute(1:InputOfComputing input);
 }
