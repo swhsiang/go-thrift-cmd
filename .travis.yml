@@ -1,0 +1,19 @@
+language: go
+go:
+ - 1.6.1
+ - tip
+
+before_install:
+ - make errcheck
+
+before_script:
+ - make
+
+script:
+ - go test -v -cover ./...
+
+after_script:
+ - make clean
+
+notifications:
+  email: false

@@ -5,5 +5,6 @@ Learn how to use thrift in golang.
 
 * [X] Makefile && GOPATH
 * [X] Glide integration
-* [ ] Server
-* [ ] Client
+* [X] Server
+* [X] Client
+* [ ] Tests

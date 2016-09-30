@@ -1,2 +1,3 @@
 package: github.com/swhsiang/go-thrift-cmd
-import: []
+import:
+    - package: swhsiang/computing

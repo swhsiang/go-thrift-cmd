@@ -1,7 +1,5 @@
 namespace go swhsiang.computing
 
-// typedef i32 int
-
 struct StatusOfService {
     1: required string version;
     // Listening which port

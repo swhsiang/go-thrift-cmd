@@ -1,14 +1,16 @@
 # swhsiang swh@hsiang.io
 
-all: idl/computing.thrift glide.yaml
+all: idl/computing.thrift glide.yaml config
+	# Build Server
+	cd src/server && go build -o ../../bin/thrift-ex-server
+	# Build Client
+	cd src/cmd && go build -o ../../bin/thrift-ex-client
+
+config:
 	# Install Go package
 	glide install;
 	# Generated Thrift package.
 	thrift --gen go -out vendor -r -I idl idl/computing.thrift;
-	# Build Client
-	cd src/cmd && go build -o ../bin/thrift-ex-client
-	# Build Server
-	cd src/server && go build -o ../bin/thrift-ex-server
 
 
 test:
@@ -16,6 +18,13 @@ test:
 	cd src/cmd && go test -timeout 60s -v ./... ;
 	# Test Server
 	cd src/server && go test -timeout 60s -v ./... ;
+
+errcheck:
+	go get -v -u github.com/kisielk/errcheck
+	#------------------------
+	# Err check
+	#------------------------
+	errcheck -ignoretests ./...
 
 regen:
 	rm -rf vendor/swhsiang/computing/;
@@ -29,6 +38,5 @@ clean:
 	rm -rf vendor/swhsiang/computing;
 
 run:
-	bin/thrift-ex-server -secure &
-	sleep 1 && bin/thrift-ex-client -secure
-	sleep 1 && pkill -9 thrift-ex-server
+	bin/thrift-ex-server &
+	sleep 1 && bin/thrift-ex-client
