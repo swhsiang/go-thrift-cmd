@@ -6,6 +6,10 @@ all: idl/computing.thrift glide.yaml config
 	# Build Client
 	cd src/cmd && go build -o ../../bin/thrift-ex-client
 
+install:
+	# Instasll glide
+	curl https://glide.sh/get | sh
+
 config:
 	# Install Go package
 	glide install;

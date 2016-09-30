@@ -4,6 +4,9 @@ go:
  - tip
  - 1.7.1
 
+install:
+ - make install
+
 before_script:
  - make
 
