@@ -2,9 +2,7 @@ language: go
 go:
  - 1.6.1
  - tip
-
-before_install:
- - make errcheck
+ - 1.7.1
 
 before_script:
  - make
@@ -14,6 +12,6 @@ script:
 
 after_script:
  - make clean
-
+ - make errcheck
 notifications:
   email: false
