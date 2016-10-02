@@ -24,11 +24,11 @@ test:
 	cd src/server && go test -timeout 60s -v ./... ;
 
 errcheck:
-	go get -v -u github.com/kisielk/errcheck
+	go get -v -u github.com/kisielk/errcheck ;
 	#------------------------
 	# Err check
 	#------------------------
-	errcheck -ignoretests ./...
+	errcheck $$(go list ./... | grep -v /vendor/);
 
 regen:
 	rm -rf vendor/swhsiang/computing/;
