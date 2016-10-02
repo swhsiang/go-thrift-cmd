@@ -1,6 +1,6 @@
 # swhsiang swh@hsiang.io
 
-all: idl/computing.thrift glide.yaml config
+build: idl/computing.thrift glide.yaml config
 	# Build Server
 	cd src/server && go build -o ../../bin/thrift-ex-server
 	# Build Client
